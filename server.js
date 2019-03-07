@@ -4,28 +4,18 @@ const io = require("socket.io")(server)
 
 app.get("/", (request, response) => {
   console.log(request.header)
-  res.sendFile(__dirname + "/index.html")
+  response.sendFile(__dirname + "/index.html")
 })
 
 //initialize connection
-io.on("connection", () => {
-  console.log("hello")
-
-  // emit an event to the socket
-  socket.emit("request", () => {
-    console.log("this is a request", request)
-  })
-
-  // emit an event to all
-  io.emit("broadcast", () => {
-    console.log("broadcasting")
-  })
-
-  // listen to the event
-  socket.on("reply", () => {
-    conole.log("a reply has been sent i guess")
-  })
+io.on("connection", (socket) => {
+  console.log("hello i am the connection and i can sing!!!!")
+  socket.on('disconnect', function(){
+    console.log('user cannot sing anymore');
+  });
 })
+ 
+//initiate the server
 server.listen(3000, () => {
   console.log("server is listening on port 3000")
 })

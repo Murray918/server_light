@@ -2,10 +2,9 @@ const app = require("express")()
 const server = require("http").createServer(app)
 const io = require("socket.io")(server)
 
-
-app.get('/', (request, response) => {
-    console.log(request.header)
-    response.send('<h1>Hello World</h1>')
+app.get("/", (request, response) => {
+  console.log(request.header)
+  res.sendFile(__dirname + "/index.html")
 })
 
 //initialize connection
@@ -22,10 +21,10 @@ io.on("connection", () => {
     console.log("broadcasting")
   })
 
-      // listen to the event
+  // listen to the event
   socket.on("reply", () => {
-      conole.log('a reply has been sent i guess')
-  }) 
+    conole.log("a reply has been sent i guess")
+  })
 })
 server.listen(3000, () => {
   console.log("server is listening on port 3000")

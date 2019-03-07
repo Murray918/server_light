@@ -1,0 +1,17 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "this is a test project exploring iot",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "javascript",
+    "node",
+    "johnny5",
+    "arduino"
+  ],
+  "author": "Andrew Murray",
+  "license": "ISC"
+}

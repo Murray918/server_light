@@ -22,6 +22,19 @@ io.on("connection", (socket) => {
   })
 })
 
+io.emit('some event', { for: 'everyone' })
+
+io.on('connection', function(socket){
+    socket.broadcast.emit('hi');
+  });
+
+
+  io.on('connection', function(socket){
+    socket.on('chat message', function(msg){
+      io.emit('chat message', msg);
+    });
+  });
+
 //initiate the server
 server.listen(3000, () => {
   console.log("server is listening on port 3000")
